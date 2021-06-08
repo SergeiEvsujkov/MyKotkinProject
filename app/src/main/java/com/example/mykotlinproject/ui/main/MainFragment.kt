@@ -23,8 +23,10 @@ class MainFragment : Fragment() {
 
     private lateinit var viewModel: MainViewModel
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
-                              savedInstanceState: Bundle?): View {
+    override fun onCreateView(
+        inflater: LayoutInflater, container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
         binding = FragmentDetailsBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -61,9 +63,9 @@ class MainFragment : Fragment() {
                 loadingLayout.visibility = View.GONE
                 val error = appState.error
                 Snackbar
-                        .make(mainView, "Ошибка получения данных", Snackbar.LENGTH_INDEFINITE)
-                        .setAction("Reload") { viewModel.getWeather() }
-                        .show()
+                    .make(mainView, "Ошибка получения данных", Snackbar.LENGTH_INDEFINITE)
+                    .setAction("Reload") { viewModel.getWeather() }
+                    .show()
             }
         }
     }
