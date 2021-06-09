@@ -43,4 +43,5 @@ class DetailsFragment : Fragment() {
             return fragment
         }
     }
+
 }

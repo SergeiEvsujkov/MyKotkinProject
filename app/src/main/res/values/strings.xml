@@ -7,4 +7,7 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="error">Ошибка получения данных</string>
     <string name="reload">Обновить</string>
+    <string name="snake_bar">SnakeBar</string>
+    <string name="world">world</string>
+    <string name="russia">russia</string>
 </resources>

@@ -5,7 +5,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.mykotlinproject.R
 import com.example.mykotlinproject.adapters.MainFragmentAdapter
@@ -50,31 +49,25 @@ class MainFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.mainFragmentRecyclerView.adapter = adapter
         binding.mainFragmentFAB.setOnClickListener { changeWeatherDataSet() }
-        //viewModel = ViewModelProvider(this).get(MainViewModel::class.java)
-        viewModel.getLiveData().observe(viewLifecycleOwner, Observer {
+        viewModel.getLiveData().observe(viewLifecycleOwner, {
             renderData(it)
         })
         viewModel.getWeatherFromLocalSourceRus()
     }
-    /* private fun changeWeatherDataSet() {
-         if (isDataSetRus) {
-             viewModel.getWeatherFromLocalSourceWorld()
-             binding.mainFragmentFAB.setImageResource(R.drawable.ic_russia)
-         } else {
-             viewModel.getWeatherFromLocalSourceRus()
-             binding.mainFragmentFAB.setImageResource(R.drawable.ic_earth)
-         }
 
-     }*/
-
-    private fun changeWeatherDataSet() =
-        if (isDataSetRus) {
+    private fun changeWeatherDataSet() = when (isDataSetRus) {
+        true -> {
             viewModel.getWeatherFromLocalSourceWorld()
             mainFragmentFAB.setImageResource(R.drawable.ic_russia)
-        } else {
+            mainFragmentFAB.showSnackBarNoAction(R.string.world)
+        }
+        else -> {
             viewModel.getWeatherFromLocalSourceRus()
             mainFragmentFAB.setImageResource(R.drawable.ic_earth)
+            mainFragmentFAB.showSnackBarNoAction(R.string.russia)
         }
+
+    }
 
 
     private fun renderData(appState: AppState) {
@@ -88,8 +81,6 @@ class MainFragment : Fragment() {
                 binding.mainFragmentLoadingLayout.visibility = View.VISIBLE
             }
             is AppState.Error -> {
-                // isDataSetRus = !isDataSetRus
-                //binding.mainFragmentLoadingLayout.visibility = View.GONE
                 mainFragmentRootView.showSnackBar(
                     getString(R.string.error),
                     getString(R.string.reload),
@@ -119,5 +110,12 @@ class MainFragment : Fragment() {
         length: Int = Snackbar.LENGTH_INDEFINITE
     ) {
         Snackbar.make(this, text, length).setAction(actionText, action).show()
+    }
+
+    private fun View.showSnackBarNoAction(
+        textFromRes: Int,
+        length: Int = Snackbar.LENGTH_SHORT
+    ) {
+        Snackbar.make(this, resources.getString(textFromRes), length).show()
     }
 }
