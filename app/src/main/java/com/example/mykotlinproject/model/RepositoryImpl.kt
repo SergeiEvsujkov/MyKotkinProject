@@ -6,14 +6,9 @@ import com.example.mykotlinproject.model.entities.getWorldCities
 import com.example.mykotlinproject.model.interfaces.Repository
 
 class RepositoryImpl : Repository {
-    override fun getWeatherFromServer(): Weather {
-        return Weather()
-    }
-    override fun getWeatherFromLocalStorageRus(): List<Weather> {
-        return getRussianCities()
-    }
-    override fun getWeatherFromLocalStorageWorld(): List<Weather> {
-        return getWorldCities()
-    }
+
+    override fun getWeatherFromServer() = Weather()
+    override fun getWeatherFromLocalStorageRus() = getRussianCities()
+    override fun getWeatherFromLocalStorageWorld() = getWorldCities()
 
 }
