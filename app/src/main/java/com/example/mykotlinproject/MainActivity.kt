@@ -3,6 +3,7 @@ package com.example.mykotlinproject
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mykotlinproject.databinding.MainActivityBinding
+import com.example.mykotlinproject.ui.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: MainActivityBinding

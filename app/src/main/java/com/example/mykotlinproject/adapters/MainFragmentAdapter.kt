@@ -5,7 +5,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.example.mykotlinproject.MainFragment
+import com.example.mykotlinproject.ui.main.MainFragment
 import com.example.mykotlinproject.R
 import com.example.mykotlinproject.model.entities.Weather
 

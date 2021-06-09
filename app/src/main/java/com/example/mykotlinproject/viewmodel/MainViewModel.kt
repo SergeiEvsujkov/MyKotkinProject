@@ -1,9 +1,8 @@
-package com.example.mykotlinproject.ui.main
+package com.example.mykotlinproject.viewmodel
 
 import androidx.lifecycle.*
-import com.example.mykotlinproject.model.AppState
-import com.example.mykotlinproject.model.Repository
 import com.example.mykotlinproject.model.RepositoryImpl
+import com.example.mykotlinproject.model.interfaces.Repository
 import java.lang.Thread.sleep
 
 class MainViewModel(private val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData())
@@ -22,7 +21,8 @@ class MainViewModel(private val liveDataToObserve: MutableLiveData<AppState> = M
             sleep(1000)
             val rand: Int = (0..10).random()
             if (rand  != 1) {
-                liveDataToObserve.postValue(AppState.Success(if (isRussian)
+                liveDataToObserve.postValue(
+                    AppState.Success(if (isRussian)
                     repositoryImpl.getWeatherFromLocalStorageRus() else
                     repositoryImpl.getWeatherFromLocalStorageWorld()))
             } else {

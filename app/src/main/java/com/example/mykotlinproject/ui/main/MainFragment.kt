@@ -1,4 +1,4 @@
-package com.example.mykotlinproject
+package com.example.mykotlinproject.ui.main
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -7,12 +7,13 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import com.example.mykotlinproject.R
 import com.example.mykotlinproject.adapters.MainFragmentAdapter
 import com.example.mykotlinproject.databinding.FragmentMainBinding
-import com.example.mykotlinproject.model.AppState
+import com.example.mykotlinproject.viewmodel.AppState
 import com.example.mykotlinproject.model.entities.Weather
-import com.example.mykotlinproject.ui.main.DetailsFragment
-import com.example.mykotlinproject.ui.main.MainViewModel
+import com.example.mykotlinproject.ui.details.DetailsFragment
+import com.example.mykotlinproject.viewmodel.MainViewModel
 import com.google.android.material.snackbar.Snackbar
 
 class MainFragment : Fragment() {
