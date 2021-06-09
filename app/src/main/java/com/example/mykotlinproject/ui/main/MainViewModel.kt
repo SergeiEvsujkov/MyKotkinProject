@@ -4,38 +4,30 @@ import androidx.lifecycle.*
 import com.example.mykotlinproject.model.AppState
 import com.example.mykotlinproject.model.Repository
 import com.example.mykotlinproject.model.RepositoryImpl
-import com.example.mykotlinproject.model.entities.Weather
-import java.lang.Exception
 import java.lang.Thread.sleep
-import kotlin.random.Random
 
 class MainViewModel(private val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData())
     : ViewModel(), LifecycleObserver {
-    private val repository: Repository = RepositoryImpl()
+    private val repositoryImpl: Repository = RepositoryImpl()
     private val lifeCycleLiveData = MutableLiveData<String>()
 
     fun getLiveData() = liveDataToObserve
-
-    fun getWeather() = getDataFromLocalSource()
-
-    fun getData(): LiveData<AppState> {
-        getDataFromLocalSource()
-        return liveDataToObserve
-    }
-
-    fun getLifeCycleData() = lifeCycleLiveData
-
-    fun getWeatherFromRemoteSource() = getDataFromLocalSource()
-
-    private fun getDataFromLocalSource() {
+    fun getWeatherFromLocalSourceRus() = getDataFromLocalSource(isRussian = true)
+    fun getWeatherFromLocalSourceWorld() = getDataFromLocalSource(isRussian = false)
+    fun getWeatherFromRemoteSource() = getDataFromLocalSource(isRussian = true)
+    private fun getDataFromLocalSource(isRussian: Boolean) {
         liveDataToObserve.value = AppState.Loading
+
         Thread {
             sleep(1000)
-            val rand: Int = Random.nextInt(0,10)
-            if (rand % 2 == 0) {
-                liveDataToObserve.postValue(AppState.Success(repository.getWeatherFromLocalStorage()))
+            val rand: Int = (0..10).random()
+            if (rand  != 1) {
+                liveDataToObserve.postValue(AppState.Success(if (isRussian)
+                    repositoryImpl.getWeatherFromLocalStorageRus() else
+                    repositoryImpl.getWeatherFromLocalStorageWorld()))
             } else {
-                liveDataToObserve.postValue(AppState.Error(Throwable("Ошибка получения данных")))
+                liveDataToObserve.postValue(AppState.Error(Throwable()))
+
             }
         }.start()
     }

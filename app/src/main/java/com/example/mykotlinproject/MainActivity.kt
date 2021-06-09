@@ -1,9 +1,8 @@
 package com.example.mykotlinproject
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.example.mykotlinproject.databinding.MainActivityBinding
-import com.example.mykotlinproject.ui.main.MainFragment
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: MainActivityBinding
@@ -15,7 +14,7 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, MainFragment.newInstance())
+                    .add(R.id.container,  MainFragment.newInstance())
                     .commitNow()
         }
     }
