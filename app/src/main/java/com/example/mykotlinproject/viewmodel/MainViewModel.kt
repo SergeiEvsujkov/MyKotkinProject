@@ -5,8 +5,8 @@ import com.example.mykotlinproject.model.RepositoryImpl
 import com.example.mykotlinproject.model.interfaces.Repository
 import java.lang.Thread.sleep
 
-class MainViewModel(private val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData())
-    : ViewModel(), LifecycleObserver {
+class MainViewModel(private val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData()) :
+    ViewModel(), LifecycleObserver {
     private val repositoryImpl: Repository = RepositoryImpl()
     private val lifeCycleLiveData = MutableLiveData<String>()
 
@@ -19,16 +19,15 @@ class MainViewModel(private val liveDataToObserve: MutableLiveData<AppState> = M
 
         Thread {
             sleep(1000)
-            val rand: Int = (0..10).random()
-            if (rand  != 1) {
-                liveDataToObserve.postValue(
-                    AppState.Success(if (isRussian)
-                    repositoryImpl.getWeatherFromLocalStorageRus() else
-                    repositoryImpl.getWeatherFromLocalStorageWorld()))
-            } else {
-                liveDataToObserve.postValue(AppState.Error(Throwable()))
 
-            }
+            liveDataToObserve.postValue(
+                AppState.Success(
+                    if (isRussian)
+                        repositoryImpl.getWeatherFromLocalStorageRus() else
+                        repositoryImpl.getWeatherFromLocalStorageWorld()
+                )
+            )
+
         }.start()
     }
 

@@ -81,9 +81,11 @@ class MainFragment : Fragment() {
                 binding.mainFragmentLoadingLayout.visibility = View.VISIBLE
             }
             is AppState.Error -> {
+                binding.mainFragmentLoadingLayout.visibility = View.GONE
                 mainFragmentRootView.showSnackBar(
                     getString(R.string.error),
                     getString(R.string.reload),
+
                     {
                         if (!isDataSetRus)
                             viewModel.getWeatherFromLocalSourceRus() else
