@@ -120,4 +120,9 @@ class MainFragment : Fragment() {
     ) {
         Snackbar.make(this, resources.getString(textFromRes), length).show()
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
+    }
 }
