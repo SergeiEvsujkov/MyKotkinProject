@@ -1,4 +1,4 @@
-package com.example.mykotlinproject.adapters
+package com.example.mykotlinproject.ui.main
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,7 +7,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mykotlinproject.R
 import com.example.mykotlinproject.model.entities.Weather
-import com.example.mykotlinproject.ui.main.MainFragment
 
 class MainFragmentAdapter(private var onItemViewClickListener:
                           MainFragment.OnItemViewClickListener?) :

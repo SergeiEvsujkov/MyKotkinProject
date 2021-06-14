@@ -1,4 +1,4 @@
-package com.example.mykotlinproject.model.interfaces
+package com.example.mykotlinproject.repository
 
 import com.example.mykotlinproject.model.entities.Weather
 

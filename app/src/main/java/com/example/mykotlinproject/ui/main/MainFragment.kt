@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import com.example.mykotlinproject.R
-import com.example.mykotlinproject.adapters.MainFragmentAdapter
 import com.example.mykotlinproject.databinding.FragmentMainBinding
 import com.example.mykotlinproject.model.entities.Weather
 import com.example.mykotlinproject.ui.details.DetailsFragment

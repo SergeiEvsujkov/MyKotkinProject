@@ -1,11 +1,11 @@
-package com.example.mykotlinproject
+package com.example.mykotlinproject.ui
 
 import android.content.IntentFilter
 import android.net.ConnectivityManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.mykotlinproject.R
 import com.example.mykotlinproject.databinding.MainActivityBinding
-import com.example.mykotlinproject.ui.experiments.MainBroadcastReceiver
 import com.example.mykotlinproject.ui.main.MainFragment
 
 class MainActivity : AppCompatActivity() {

@@ -1,9 +1,8 @@
-package com.example.mykotlinproject.model
+package com.example.mykotlinproject.repository
 
 import com.example.mykotlinproject.model.entities.Weather
 import com.example.mykotlinproject.model.entities.getRussianCities
 import com.example.mykotlinproject.model.entities.getWorldCities
-import com.example.mykotlinproject.model.interfaces.Repository
 
 class RepositoryImpl : Repository {
 

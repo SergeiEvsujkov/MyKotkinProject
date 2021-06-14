@@ -1,8 +1,8 @@
 package com.example.mykotlinproject.viewmodel
 
 import androidx.lifecycle.*
-import com.example.mykotlinproject.model.RepositoryImpl
-import com.example.mykotlinproject.model.interfaces.Repository
+import com.example.mykotlinproject.repository.RepositoryImpl
+import com.example.mykotlinproject.repository.Repository
 import java.lang.Thread.sleep
 
 class MainViewModel(private val liveDataToObserve: MutableLiveData<AppState> = MutableLiveData()) :
