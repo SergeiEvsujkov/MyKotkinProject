@@ -2,9 +2,11 @@ package com.example.mykotlinproject.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.example.mykotlinproject.model.entities.*
+import com.example.mykotlinproject.model.entities.RemoteDataSource
+import com.example.mykotlinproject.model.entities.WeatherDTO
 import com.example.mykotlinproject.repository.DetailsRepository
 import com.example.mykotlinproject.repository.DetailsRepositoryImpl
+import com.example.mykotlinproject.utils.convertDtoToModel
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -46,7 +48,7 @@ class DetailsViewModel(
         private fun checkResponse(serverResponse: WeatherDTO): AppState {
             val fact = serverResponse.fact
             return if (fact?.temp == null || fact.feels_like ==
-                null || fact.condition.isNullOrEmpty()) {
+                null || fact.condition.isNullOrEmpty() || fact.icon == null) {
                 AppState.Error(Throwable(CORRUPTED_DATA))
             } else {
                 AppState.Success(convertDtoToModel(serverResponse))
@@ -54,10 +56,10 @@ class DetailsViewModel(
         }
     }
 
-    fun convertDtoToModel(weatherDTO: WeatherDTO): List<Weather> {
+    /*fun convertDtoToModel(weatherDTO: WeatherDTO): List<Weather> {
         val fact: FactDTO = weatherDTO.fact!!
         return listOf(Weather(getDefaultCity(), fact.temp!!, fact.feels_like!!,
-            fact.condition!!))
-    }
+            fact.condition!!, fact.icon!!))
+    }*/
 
 }

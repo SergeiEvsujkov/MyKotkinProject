@@ -1,5 +1,6 @@
 package com.example.mykotlinproject.ui.details
 
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -13,23 +14,12 @@ import com.example.mykotlinproject.model.entities.Weather
 import com.example.mykotlinproject.utils.showSnackBar
 import com.example.mykotlinproject.viewmodel.AppState
 import com.example.mykotlinproject.viewmodel.DetailsViewModel
+import com.github.twocoffeesoneteam.glidetovectoryou.GlideToVectorYou
+import com.squareup.picasso.Picasso
+import kotlinx.android.synthetic.main.fragment_details.*
 
 
-const val DETAILS_INTENT_FILTER = "DETAILS INTENT FILTER"
-const val DETAILS_LOAD_RESULT_EXTRA = "LOAD RESULT"
-const val DETAILS_INTENT_EMPTY_EXTRA = "INTENT IS EMPTY"
-const val DETAILS_DATA_EMPTY_EXTRA = "DATA IS EMPTY"
-const val DETAILS_RESPONSE_EMPTY_EXTRA = "RESPONSE IS EMPTY"
-const val DETAILS_REQUEST_ERROR_EXTRA = "REQUEST ERROR"
-const val DETAILS_REQUEST_ERROR_MESSAGE_EXTRA = "REQUEST ERROR MESSAGE"
-const val DETAILS_URL_MALFORMED_EXTRA = "URL MALFORMED"
-const val DETAILS_RESPONSE_SUCCESS_EXTRA = "RESPONSE SUCCESS"
-const val DETAILS_TEMP_EXTRA = "TEMPERATURE"
-const val DETAILS_FEELS_LIKE_EXTRA = "FEELS LIKE"
-const val DETAILS_CONDITION_EXTRA = "CONDITION"
 
-
-private const val MAIN_LINK = "https://api.weather.yandex.ru/v2/informers?"
 
 class DetailsFragment : Fragment() {
     private var _binding: FragmentDetailsBinding? = null
@@ -94,8 +84,24 @@ class DetailsFragment : Fragment() {
         )
         binding.temperatureValue.text = weather.temperature.toString()
         binding.feelsLikeValue.text = weather.feelsLike.toString()
-        binding.weatherCondition.text = weather.condition
+        binding.weatherCondition.text =
+            getText(resources.getIdentifier(weather.condition, "string", "com.example.mykotlinproject"))
+        //weather.icon
+        Picasso
+            .get()
+            .load("https://freepngimg.com/thumb/city/36275-3-city-hd.png")
+            .into(headerIcon)
+
+        weather.icon?.let {
+            GlideToVectorYou.justLoadImage(
+                activity,
+                Uri.parse("https://yastatic.net/weather/i/icons/blueye/color/svg/${it}.svg"),
+                weatherIcon
+            )
         }
+
+    }
+
 
 
     override fun onDestroyView() {
