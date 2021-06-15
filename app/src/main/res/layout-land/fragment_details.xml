@@ -122,17 +122,30 @@
                 app:layout_constraintTop_toBottomOf="@+id/temperature"
                 app:layout_constraintVertical_bias="0.15"
                 tools:text="Облачно" />
+
+            <Switch
+                android:id="@+id/switch1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:layout_marginBottom="@dimen/margin_15_dp"
+                android:text="@string/icon_show"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:ignore="UseSwitchCompatOrMaterialXml" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <ImageView
             android:id="@+id/weatherIcon"
-            android:layout_width="@dimen/weather_icon_width"
+            android:layout_width="111dp"
             android:layout_height="@dimen/weather_icon_height"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/margin_15_dp"
             android:layout_weight="1"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+
     </LinearLayout>
 
     <FrameLayout

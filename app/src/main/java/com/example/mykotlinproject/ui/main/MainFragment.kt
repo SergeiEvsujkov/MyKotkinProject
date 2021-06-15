@@ -18,6 +18,7 @@ import kotlinx.android.synthetic.main.fragment_main.*
 
 private const val IS_WORLD_KEY = "LIST_OF_TOWNS_KEY"
 
+
 class MainFragment : Fragment() {
     private var _binding: FragmentMainBinding? = null
     private val binding get() = _binding!!
@@ -50,6 +51,7 @@ class MainFragment : Fragment() {
         return binding.root
     }
 
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.mainFragmentRecyclerView.adapter = adapter
@@ -57,6 +59,7 @@ class MainFragment : Fragment() {
         viewModel.getLiveData().observe(viewLifecycleOwner, {
             renderData(it)
         })
+
 
         showListOfTowns()
             //viewModel.getWeatherFromLocalSourceRus()

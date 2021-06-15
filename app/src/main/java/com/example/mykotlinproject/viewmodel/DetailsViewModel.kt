@@ -2,10 +2,14 @@ package com.example.mykotlinproject.viewmodel
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.mykotlinproject.model.app.App.Companion.getHistoryDao
 import com.example.mykotlinproject.model.entities.RemoteDataSource
+import com.example.mykotlinproject.model.entities.Weather
 import com.example.mykotlinproject.model.entities.WeatherDTO
 import com.example.mykotlinproject.repository.DetailsRepository
 import com.example.mykotlinproject.repository.DetailsRepositoryImpl
+import com.example.mykotlinproject.repository.LocalRepository
+import com.example.mykotlinproject.repository.LocalRepositoryImpl
 import com.example.mykotlinproject.utils.convertDtoToModel
 import retrofit2.Call
 import retrofit2.Callback
@@ -19,13 +23,20 @@ private const val CORRUPTED_DATA = "Неполные данные"
 class DetailsViewModel(
     val detailsLiveData: MutableLiveData<AppState> = MutableLiveData(),
     private val detailsRepositoryImpl: DetailsRepository =
-        DetailsRepositoryImpl(RemoteDataSource())
+        DetailsRepositoryImpl(RemoteDataSource()),
+                private val historyRepository: LocalRepository =
+            LocalRepositoryImpl(getHistoryDao())
 ) : ViewModel() {
     fun getLiveData() = detailsLiveData
     fun getWeatherFromRemoteSource(lat: Double, lon: Double) {
         detailsLiveData.value = AppState.Loading
         detailsRepositoryImpl.getWeatherDetailsFromServer(lat, lon, callBack)
     }
+
+    fun saveCityToDB(weather: Weather) {
+        historyRepository.saveEntity(weather)
+    }
+
 
     private val callBack = object :
         Callback<WeatherDTO> {
@@ -56,10 +67,6 @@ class DetailsViewModel(
         }
     }
 
-    /*fun convertDtoToModel(weatherDTO: WeatherDTO): List<Weather> {
-        val fact: FactDTO = weatherDTO.fact!!
-        return listOf(Weather(getDefaultCity(), fact.temp!!, fact.feels_like!!,
-            fact.condition!!, fact.icon!!))
-    }*/
+
 
 }
