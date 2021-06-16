@@ -32,5 +32,6 @@
     <string name="menu_title_history">history</string>
     <string name="switch_icon">Switch</string>
     <string name="icon_show">Видимость иконки</string>
+    <string name="content_provider">content_provider</string>
 
 </resources>

@@ -8,6 +8,7 @@ import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import com.example.mykotlinproject.R
 import com.example.mykotlinproject.databinding.MainActivityBinding
+import com.example.mykotlinproject.ui.main.ContentProviderFragment
 import com.example.mykotlinproject.ui.main.HistoryFragment
 import com.example.mykotlinproject.ui.main.MainFragment
 
@@ -52,6 +53,15 @@ class MainActivity : AppCompatActivity() {
                 supportFragmentManager.apply {
                     beginTransaction()
                         .replace(R.id.container, HistoryFragment.newInstance())
+                        .addToBackStack("")
+                        .commitAllowingStateLoss()
+                }
+                true
+            }
+            R.id.menu_content_provider -> {
+                supportFragmentManager.apply {
+                    beginTransaction()
+                        .add(R.id.container, ContentProviderFragment.newInstance())
                         .addToBackStack("")
                         .commitAllowingStateLoss()
                 }
