@@ -106,6 +106,7 @@ class ContentProviderFragment : Fragment() {
         }
     }
 
+    
     private fun getContacts() {
         context?.let {
 // Получаем ContentResolver у контекста
