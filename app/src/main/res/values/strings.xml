@@ -3,4 +3,35 @@
     <string name="temperature_label">Температура</string>
     <string name="feels_like_label">Ощущается как</string>
     <string name="city_coordinates">lt/ln: %s, %s"</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="error">Ошибка получения данных</string>
+    <string name="reload">Обновить</string>
+    <string name="snake_bar">SnakeBar</string>
+    <string name="world">world</string>
+    <string name="russia">Russia</string>
+    <string name="clear">Ясно</string>
+    <string name="partly_cloudy">Малооблачно</string>
+    <string name="cloudy">Облачно с прояснениями</string>
+    <string name="overcast">Пасмурно</string>
+    <string name="drizzle">Морось</string>
+    <string name="light_rain">Небольшой дождь</string>
+    <string name="rain">Дождь</string>
+    <string name="moderate_rain">Умеренно сильный дождь</string>
+    <string name="heavy_rain">Сильный дождь</string>
+    <string name="continuous_heavy_rain">Длительный сильный дождь</string>
+    <string name="showers">Ливень</string>
+    <string name="wet_snow">Дождь со снегом</string>
+    <string name="light_snow">Небольшой снег</string>
+    <string name="snow">Снег</string>
+    <string name="snow_showers">Снегопад</string>
+    <string name="hail">Град</string>
+    <string name="thunderstorm">Гроза</string>
+    <string name="thunderstorm_with_rain">Дождь с грозой</string>
+    <string name="thunderstorm_with_hail">Дождь с градом</string>
+    <string name="menu_title_history">history</string>
+    <string name="switch_icon">Switch</string>
+    <string name="icon_show">Видимость иконки</string>
+    <string name="content_provider">content_provider</string>
+
 </resources>
