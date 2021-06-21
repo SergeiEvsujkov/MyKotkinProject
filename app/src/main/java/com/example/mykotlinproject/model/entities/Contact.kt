@@ -4,8 +4,10 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class City(
-    val city: String,
-    val lat: Double,
-    val lon: Double
+data class Contact(
+    val name: String = getDefaultName(),
 ) : Parcelable
+
+fun getDefaultName(): String {
+    return "Ivan"
+}
