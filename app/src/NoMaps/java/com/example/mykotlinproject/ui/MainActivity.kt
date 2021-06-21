@@ -6,7 +6,6 @@ import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import com.example.mykotlinproject.MapsFragment
 import com.example.mykotlinproject.R
 import com.example.mykotlinproject.databinding.MainActivityBinding
 import com.example.mykotlinproject.ui.main.ContentProviderFragment
@@ -69,15 +68,6 @@ class MainActivity : AppCompatActivity() {
                 true
             }
 
-            R.id.menu_google_maps -> {
-                supportFragmentManager.apply {
-                    beginTransaction()
-                        .add(R.id.container, MapsFragment())
-                        .addToBackStack("")
-                        .commitAllowingStateLoss()
-                }
-                true
-            }
             else -> super.onOptionsItemSelected(item)
         }
     }

@@ -39,13 +39,6 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
 
-        debug {
-            versionNameSuffix "-debug"
-        }
-        staging {
-            initWith debug
-            versionNameSuffix "-staging"
-        }
     }
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -53,6 +46,17 @@ android {
     }
     kotlinOptions {
         jvmTarget = JavaVersion.VERSION_1_8.toString()
+    }
+    flavorDimensions 'version'
+    productFlavors {
+        NoMaps {
+            dimension 'version'
+            versionNameSuffix '.nomaps'
+        }
+        WithMaps {
+            dimension 'version'
+            versionNameSuffix '.withmaps'
+        }
     }
 }
 

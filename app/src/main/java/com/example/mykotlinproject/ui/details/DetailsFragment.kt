@@ -29,7 +29,7 @@ class DetailsFragment : Fragment() {
     private val binding get() = _binding!!
     private lateinit var weatherBundle: Weather
     private var isIconShow: Boolean = true
-    //private var switch : Int = R.id.switch1
+
 
 
     private val viewModel: DetailsViewModel by lazy {
@@ -132,14 +132,18 @@ class DetailsFragment : Fragment() {
         )
         binding.temperatureValue.text = weather.temperature.toString()
         binding.feelsLikeValue.text = weather.feelsLike.toString()
-        binding.weatherCondition.text =
-            getText(
-                resources.getIdentifier(
-                    weather.condition,
-                    "string",
-                    "com.example.mykotlinproject"
+        try {
+            binding.weatherCondition.text =
+                getText(
+                    resources.getIdentifier(
+                        weather.condition,
+                        "string",
+                        "com.example.mykotlinproject"
+                    )
                 )
-            )
+        } catch (e: Exception) {
+            binding.weatherCondition.text = weather.condition.toString()
+        }
         Picasso
             .get()
             .load("https://freepngimg.com/thumb/city/36275-3-city-hd.png")
