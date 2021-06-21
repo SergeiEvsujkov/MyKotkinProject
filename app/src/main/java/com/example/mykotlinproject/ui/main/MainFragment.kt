@@ -69,7 +69,7 @@ class MainFragment : Fragment() {
 
         showListOfTowns()
         binding.mainFragmentFABLocation.setOnClickListener { checkPermission() }
-            //viewModel.getWeatherFromLocalSourceRus()
+
     }
 
     private fun showListOfTowns() {

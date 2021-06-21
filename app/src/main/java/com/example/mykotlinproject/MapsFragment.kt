@@ -66,7 +66,7 @@ class MapsFragment : Fragment() {
             Thread {
                 try {
                     val addresses = geoCoder.getFromLocationName(searchText, 1)
-                    if (addresses.size > 0) {
+                    if (addresses.isNotEmpty()) {
                         goToAddress(addresses, it, searchText)
                     }
                 } catch (e: IOException) {
@@ -82,8 +82,8 @@ class MapsFragment : Fragment() {
         searchText: String
     ) {
         val location = LatLng(
-            addresses[0].latitude,
-            addresses[0].longitude
+            addresses.first().latitude,
+            addresses.first().longitude
         )
         view.post {
             setMarker(location, searchText, R.drawable.ic_map_marker)
