@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.mykotlinproject.MapsFragment
 import com.example.mykotlinproject.R
 import com.example.mykotlinproject.databinding.MainActivityBinding
+
 import com.example.mykotlinproject.ui.main.ContentProviderFragment
 import com.example.mykotlinproject.ui.main.HistoryFragment
 import com.example.mykotlinproject.ui.main.MainFragment
@@ -26,7 +27,7 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .add(R.id.container, MainFragment.newInstance())
+                .replace(R.id.container, MainFragment.newInstance())
                 .commitNow()
         }
         registerReceiver(receiver, IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))

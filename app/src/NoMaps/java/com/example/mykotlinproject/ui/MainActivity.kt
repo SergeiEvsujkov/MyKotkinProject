@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .add(R.id.container, MainFragment.newInstance())
+                .replace(R.id.container, MainFragment.newInstance())
                 .commitNow()
         }
         registerReceiver(receiver, IntentFilter(ConnectivityManager.CONNECTIVITY_ACTION))

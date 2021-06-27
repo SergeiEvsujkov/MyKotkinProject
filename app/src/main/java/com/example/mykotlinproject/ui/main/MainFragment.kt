@@ -354,7 +354,7 @@ class MainFragment : Fragment() {
     ) {
         activity?.supportFragmentManager?.apply {
             beginTransaction()
-                .add(
+                .replace(
                     R.id.container,
                     DetailsFragment.newInstance(Bundle().apply {
                         putParcelable(DetailsFragment.BUNDLE_EXTRA, weather)
