@@ -157,6 +157,7 @@ hs_err_pid*
 # Android Studio
 /*/build/
 /*/local.properties
+apikey.properties
 /*/out
 /*/*/build
 /*/*/production
